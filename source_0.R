@@ -1,5 +1,5 @@
 # Step 1 : preprocessing
-source("preprocessiong_1")
+source("preprocessing_1")
 
 # Step 2 : geogoding
 source("geocoding_2")
@@ -8,6 +8,8 @@ source("geocoding_2")
 source("description_3")
 
 # Step 4 : Preliminary results
+source("analysis_4")
 
-# Step 5 : ...
+# Step 5 : Figures
+source("figure_5")
 

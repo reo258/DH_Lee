@@ -1,19 +1,18 @@
 # Figure 1 - counting posts by time
-daily_count <- text %>%
+daily_count <- df_a %>%
   mutate(date = date(time)) %>%
   group_by(date) %>%
-  filter(date >= as.Date("2024-01-01")) %>% 
+  filter(date >= as.Date("2024-01-16")) %>% 
   summarise(count = n())
 
 ggplot(daily_count, aes(x = date, y = count)) +
   geom_line() +
   labs(title = "Daily Data Count(2024)", x = "Date", y = "Count") +
-  scale_x_date(date_breaks = "7 day", date_labels = "%m-%d") +
   theme_minimal()
 
 
 # Figure 2 - top 20 words
-text %>%
+text_a %>%
   count(word, sort = TRUE) %>%
   slice(1:20) %>%
   mutate(word = reorder(word, n)) %>%
@@ -23,7 +22,7 @@ text %>%
 
 
 # Figure 3 - words statistics
-text %>%
+text_a %>%
   group_by(id) %>%
   summarise(total_count = n(), .groups = 'drop') %>%
   summarise(mean = mean(total_count), sd = sd(total_count)) %>% 
@@ -35,3 +34,7 @@ text %>%
        y = "Word Count") +
   theme_minimal()
   
+text_a %>%
+  group_by(id) %>%
+  summarise(total_count = n(), .groups = 'drop') %>%
+  summarise(mean = mean(total_count), sd = sd(total_count)) 
